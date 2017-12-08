@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+p, span {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.home_wrapper{
+    width: 100%;
+    height: auto;
+}
+.main_menu{
+    height: 100px;
+}
+
+.logo{
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    float: left;
+}
+
+.right_part_menu{
+    float: right;
+}
+
+.language{
+    width: 30px;
+    height: 100px;
+}
+
+.change_language{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: dimgray;
+    margin-top: 35px;
+    text-align: center;
+}
+.change_language p{
+    color: white;
+    font-size: 10pt;
+    padding-top: 6px;
+}
+
+.account_question{
+    width: 180px;
+    height: 100px;
+}
+
+.account_question p{
+    font-size: 12pt;
+    color: dimgray;
+    padding-top: 40px;
+    padding-left: 20px;
+}
+
+.sign_in{
+    width: 100px;
+    height: 100px;
+}
+
+.button_sign_in{
+    height: 30px;
+    width: 100px;
+    border-radius: 15px;
+    margin-top: 35px;
+    text-align: center;
+    background-color: red;
+}
+.button_sign_in p{
+    color: white;
+    font-size: 12pt;
+    padding-top: 4px;
+}
+
+.sign_up{
+    width: 180px;
+    height: 100px;
+    margin-left: 20px;
+}
+
+.button_sign_up{
+    height: 30px;
+    width: 180px;
+    border-radius: 15px;
+    margin-top: 35px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid red;
+}
+.button_sign_up p{
+    color: red;
+    font-size: 12pt;
+    padding-top: 4px;
+}
+
+.left_part{
+    width: 50%;
+    height: auto;
+    float: left;
+}
+
+.right_part{
+    width: 50%;
+    height: auto;
+    float: right;
+}
+
+.title_content_info{
+    margin-top: 190px;
+}
+
+.title_content_info p{
+    font-size: 28pt;
+    color: black;
+    font-weight: bold;
+    line-height: 1.1;
+}
+.title_content_info span{
+    color: red;
+    font-size: 28pt;
+    font-weight: bold;
+}
+
+.line_after_title_content_info{
+    height: 5px;
+    background-color: black;
+    width: 60px;
+    margin-top: 15px;
+}
+
+.text_content_info{
+    text-align: left;
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.text_content_info_employee{
+    margin-top: 20px;
+}
+
+.text_content_info_employer{
+    margin-top: 20px;
+}
+
+.content_info_text{
+    height: auto;
+    display: inline-block;
+}
+.employee-home-info{
+    height: auto;
+    display: inline-block;
+}
+
+.buttons_content_info{
+    width: 100%;
+    height: auto;
+    margin-top: 25px;
+}
+
+.im_actor_button{
+    width: 130px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20pt;
+    border: 1px solid red;
+    float: left;
+    text-align: center;
+}
+.im_actor_button p{
+    font-size: 11pt;
+    color: red;
+    font-weight: 600;
+    padding-top: 9px;
+}
+
+.im_producer_button{
+    margin-left: 15px;
+    width: 170px;
+    height: 40px;
+    background-color: red;
+    border-radius: 20pt;
+    float: left;
+    text-align: center;
+}
+.im_producer_button p{
+    font-size: 11pt;
+    color: white;
+    font-weight: 600;
+    padding-top: 9px;
+}
+
+.come_over{
+    width: 170px;
+    height: 40px;
+    background-color: red;
+    border-radius: 20pt;
+    float: left;
+    text-align: center;
+}
+
+.come_over p{
+    font-size: 11pt;
+    color: white;
+    font-weight: 600;
+    padding-top: 9px;
+}
+
+.about_sub{
+    margin-left: 15px;
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20pt;
+    border: 1px solid red;
+    float: left;
+    text-align: center;
+}
+
+.about_sub p{
+    font-size: 11pt;
+    color: red;
+    font-weight: 600;
+    padding-top: 9px;
+}
+
+.main_photo{
+    width: 100%;
+    text-align: right;
+    margin-top: 120px;
+}
+
+.back_to_main{
+    width: 200px;
+    height: 30px;
+    float: left;
+    margin-top: 35px;
+    margin-left: 30px;
+    background-color: gray;
+    border-radius: 15px 15px;
+    text-align: center;
+}
+
+.back_to_main p{
+    color: white;
+    padding-top: 3px;
+}
+
+.invisible{
+    display:none;
+}
+
+.employee-home-info{
+    padding-left: 0!important;
+    text-align: left;
+}
+
+.title-home-employee-info{
+    font-size: 11pt;
+}
+
+.text-home-employee-info{
+    font-size: 8pt;
+}
+
+.span-text-home-employee-info{
+    color: red;
+    font-size: 8pt;
+}

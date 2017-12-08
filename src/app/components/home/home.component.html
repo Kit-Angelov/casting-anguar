@@ -1,0 +1,160 @@
+<div class="home_wrapper">
+    <div class="main_menu">
+        <div class="logo left_part_menu">
+
+        </div>
+        <div [ngClass]="{invisible: visibility}" (click)="toggle_home()" class="back_to_main">
+            <p>вернуться на главную</p>
+        </div>
+        <div class="sign_up right_part_menu">
+            <div class="button_sign_up">
+                <a [routerLink]="['/reg', state]"><p>Зарегистрироваться</p></a>
+            </div>
+        </div>
+        <div class="sign_in right_part_menu">
+            <div class="button_sign_in">
+                <a routerLink="/auth">Войти</a>
+            </div>
+        </div>
+        <div class="account_question right_part_menu">
+            <p>Уже есть аккаунт?</p>
+        </div>
+        <div class="language right_part_menu">
+            <div class="change_language">
+                <p>EN</p>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="left_part">
+            <div class="content_info">
+                <div *ngIf="state == 0" class="content_info_text">
+                <div class="title_content_info">
+                    <p>Чип & Дейл - <br>
+                        <span>кастинговое агентство</span><br>
+                        полного цикла</p>
+                </div>
+                <div class="line_after_title_content_info"></div>
+                <div class="text_content_info">
+                    <p>
+                        Данный сайт - это ресурс, на котором размещаются кастинги Москвы, а также единая актуальная<br>
+                        база актеров. Чип & Дейл - самый удобный ресурс для тех, кто заинтересован в съемках, от<br>
+                        начинающих актеров до профессионалов.
+                    </p>
+                </div>
+                </div>
+                <div *ngIf="state == 1" class="content_info_text">
+                    <div class="title_content_info">
+                        <p>Актуальные кастинги и<br>
+                            возможности <span>каждый день</span></p>
+                    </div>
+                    <div class="line_after_title_content_info"></div>
+                    <div class="text_content_info_employee">
+                        <div class="col-md-4 employee-home-info">
+                            <p>Img</p>
+                            <p class="title-home-employee-info">Большая база<br>актуальных кастингов</p>
+                            <p class="text-home-employee-info">Нет необходимости искать<br>
+                                кастинги на множестве<br>
+                                сторонних ресурсов - здесь Вы<br>
+                                можете найти множество<br>
+                                возможностей для себя.</p>
+                        </div>
+                        <div class="col-md-4 employee-home-info">
+                            <p>Img</p>
+                            <p class="title-home-employee-info">Индивидуальный<br>редактируемый пофиль</p>
+                            <p class="text-home-employee-info">Анкета, заполняемая Вами,<br>
+                                содержит все самые важные<br>
+                                параметры. Она видна для<br>
+                                соискателей, а также вы можете<br>
+                                сами отвечать ей на вакансии.</p>
+                        </div>
+                        <div class="col-md-4 employee-home-info">
+                            <p>Img</p>
+                            <p class="title-home-employee-info">Быстрая и удобная<br>коммуникация</p>
+                            <p class="text-home-employee-info">Соискатели видят Ваши<br>
+                                контактные данные. Вам также<br>
+                                придет уведомление, если вас<br>
+                                пригласят или утвердят на<br>
+                                кастинг.</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="state == 2" class="content_info_text">
+                    <div class="title_content_info">
+                        <p>Удобная и актуальная база<br>
+                            <span>актёров и моделей</span></p>
+                    </div>
+                    <div class="line_after_title_content_info"></div>
+                    <div class="text_content_info_employer">
+                        <div class="col-md-4 employee-home-info">
+                            <p>Img</p>
+                            <p class="title-home-employee-info">Простой и понятный<br>интерфейс</p>
+                            <p class="text-home-employee-info">Войдите в систему, <span class="span-text-home-employee-info">оформите<br>
+                                подписку</span>, разместите вакансию<br>
+                                и выбирайте лучших из лучших,<br>
+                                или приглашайте актёров на<br>
+                                кастинг самостоятельно.</p>
+                        </div>
+                        <div class="col-md-4 employee-home-info">
+                            <p>Img</p>
+                            <p class="title-home-employee-info">Поиск исполнителей<br>под любой проект</p>
+                            <p class="text-home-employee-info">"Чип & Дейл" позволяет Вам<br>
+                                найти исполнителей на любой<br>
+                                проект, будь то киносъёмка,<br>
+                                рекламная съёмка, модельная<br>
+                                съёмка или любая другая.</p>
+                        </div>
+                        <div class="col-md-4 employee-home-info">
+                            <p>Img</p>
+                            <p class="title-home-employee-info">Быстрая и удобная<br>коммуникация</p>
+                            <p class="text-home-employee-info">После <span class="span-text-home-employee-info">оформления подписки</span><br>
+                                вам доступны все контактные<br>
+                                данные актёров и моделей. Им<br>
+                                также придут уведомления, если<br>
+                                вы пригласите их на кастинг.</p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="state == 0" class="buttons_content_info">
+                    <div (click)="toggle_employee()" class="im_actor_button">
+                        <p>Я - АКТЕР</p>
+                    </div>
+                    <div (click)="toggle_employer()" class="im_producer_button">
+                        <p>Я - РЕЖИССЕР</p>
+                    </div>
+                </div>
+                <div *ngIf="state == 1" class="buttons_content_info">
+                    <div class="come_over">
+                        <p>Присоединиться</p>
+                    </div>
+                </div>
+                <div *ngIf="state == 2" class="buttons_content_info">
+                    <div class="come_over">
+                        <p>Присоединиться</p>
+                    </div>
+                    <div class="about_sub">
+                        <p>Подробней о подписке</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contacts_info">
+                <div class="contacts_info_phone">
+                    <div class="contacts_info_phone_img"></div>
+                    <div class="contacts_info_phone_txt"></div>
+                </div>
+                <div class="contacts_info_mail">
+                    <div class="contacts_info_mail_img"></div>
+                    <div class="contacts_info_mail_txt"></div>
+                </div>
+            </div>
+        </div>
+        <div class="right_part">
+            <div class="main_photo">
+                <img *ngIf="state == 0" src="./img/kamera.png">
+                <img *ngIf="state == 1" src="./img/kamera.png">
+                <img *ngIf="state == 2" src="./img/kamera.png">
+            </div>
+        </div>
+    </div>
+</div>
