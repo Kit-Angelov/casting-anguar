@@ -1,0 +1,42 @@
+<div class="main-wrapp-body">
+<div class="main-wrapp-user">
+    <div class="main-menu">
+        <div class="menu-elem">
+            <img class="menu-elem-icon">
+            <a routerLink="casting_list" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Мои кастинги</a>
+        </div>
+        <div class="menu-elem">
+            <img class="menu-elem-icon">
+            <a routerLink="inv_req" routerLinkActive="active">Заявки и приглашения</a>
+        </div>
+        <div class="menu-elem">
+            <img class="menu-elem-icon">
+            <a routerLink="employees" routerLinkActive="active">Каталог Актеров</a>
+        </div>
+        <div class="menu-elem">
+            <img class="menu-elem-icon">
+            <a routerLink="profile" routerLinkActive="active">Мой профиль</a>
+        </div>
+        <div class="menu-elem">
+            <img class="menu-elem-icon">
+            <a routerLink="/logout">Выйти</a>
+        </div>
+        <div class="divide-line"></div>
+        <div class="menu-elem menu-elem-create-casting">
+            <a routerLink="">+ Создать съемку</a>
+        </div>
+    </div>
+    <div class="main-body">
+        <div class="content-wrapp">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="main-header">
+                <div class="header-logo"></div>
+                <div class="header-user">
+                    <div class="header-user-elem header-user-avatar"></div>
+                    <p class="header-user-elem header-user-name">user name</p>
+                </div>
+        </div>
+    </div>
+</div>
+</div>

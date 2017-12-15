@@ -13,6 +13,8 @@ module.exports = {
    },
     devServer: {
      historyApiFallback: true,
+        // host: '192.168.1.64',
+        // port: 8080,
    },
    resolve: {
     extensions: ['.ts', '.js', '.html', '.css']

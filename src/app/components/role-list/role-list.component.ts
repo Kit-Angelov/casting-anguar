@@ -1,12 +1,14 @@
 import { Component, OnInit} from '@angular/core';
-import {RoleList} from "./role-list";
-import {RoleListService} from "./role-list.service";
-import {CastingDetailService} from "../casting-detail/casting-detail.service";
-import {CastingDetail} from "../casting-detail/casting-detail";
-import {ParametersService} from "../parameters/parameters.service";
-import {ParametersDetail} from "../parameters/parametersDetail";
-
-
+import {Role} from "../../models/role";
+import {RoleListService} from "../../services/role-list.service";
+import {CastingDetailService} from "../../services/casting-detail.service";
+import {Casting} from "../../models/casting";
+import {ParametersService} from "../../services/parameters.service";
+import {ParametersDetail} from "../../models/parametersDetail";
+import {ActivatedRoute} from "@angular/router";
+import {RequestCreate} from "../../models/requestCreate";
+import {ParamRole} from "../../models/param-role";
+import {host} from "../../config";
 
 @Component({
     selector: 'role-list-app',
@@ -45,9 +47,10 @@ import {ParametersDetail} from "../parameters/parametersDetail";
                         <p>Цвет глаз {{role?.parameters?.eyecolor?.name}}</p>
                         <p>Пол {{role?.parameters?.gender?.name}}</p>
                         <p>Страна {{role?.parameters?.country?.name}}</p>
-                        <p *ngFor="let type of role?.parameters.employmenttype| slice:0:1">Профиль {{type.name}}</p>
+                        <p>Профиль  {{role?.parameters?.employmenttype?.name}} </p>
                     </div>
                     </div>
+                    <button (click)="CreateRequest(role?.id)">отправить заявку</button>
                 </li>
             </ul>
     </div>`,
@@ -60,15 +63,26 @@ export class RoleListComponent implements OnInit{
     toggle(i: number){
         this.visibility[i]=!this.visibility[i];
     }
-    role_list: RoleList[] = [];
-    castingDetail: CastingDetail;
-    parametersDetail: ParametersDetail;
+    role_list: Role[] = [];
+    castingDetail: Casting;
+    parametersDetail: ParamRole;
+    request: RequestCreate = new RequestCreate();
+    user_id: string = localStorage.getItem('user_id');
+    id: string;
+    request_id: number;
     constructor(private httpService: RoleListService,
                 private castingDetailService: CastingDetailService,
-                private parametersService: ParametersService){}
+                private parametersService: ParametersService){
+    }
+    CreateRequest(role_id: number){
+        this.request.employee_id = this.user_id;
+        this.request.role_id = role_id.toString();
+        console.log(this.request);
+        this.httpService.CreateRequest(this.request).subscribe(data => this.request_id = data['request_id']);
+    }
 
     ngOnInit(){
-        this.httpService.getRoleList().subscribe(data => {
+        this.httpService.getRoleList(host+'role/').subscribe(data => {
             this.role_list=data;
             let i: number = 0;
             for (let role of this.role_list){
@@ -76,14 +90,14 @@ export class RoleListComponent implements OnInit{
                 i += 1;
             }
             for (let role of this.role_list){
-                this.castingDetailService.getDetail(role.casting).subscribe((castdata:CastingDetail) => {
+                this.castingDetailService.getDetail(role.casting).subscribe((castdata:Casting) => {
                     this.castingDetail=castdata;
                     console.log(this.castingDetail);
                     role['casting'] = this.castingDetail['name'];
                     console.log(role['casting']);
                 });
                 if (role['parameters'] != null){
-                    this.parametersService.getParameters(role['parameters']).subscribe((paramdata:ParametersDetail) => {
+                    this.parametersService.getParameters(role['parameters']).subscribe((paramdata:ParamRole) => {
                         this.parametersDetail = paramdata;
                         console.log(this.parametersDetail);
                         role['parameters'] = this.parametersDetail;
@@ -92,4 +106,5 @@ export class RoleListComponent implements OnInit{
             }
         });
     }
+
 }

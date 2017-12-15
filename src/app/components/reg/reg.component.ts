@@ -1,10 +1,11 @@
 import { Component} from '@angular/core';
-import { RegService } from './reg.service';
+import { RegService } from '../../services/reg.service';
 import {HttpService} from "../../http.service";
 import {User} from '../../models/user';
 import {Auth} from '../../models/auth';
 import {Router} from '@angular/router';
 import { ActivatedRoute} from '@angular/router';
+import {host} from "../../config";
 
 @Component({
     selector: 'reg-app',
@@ -30,7 +31,7 @@ export class RegComponent {
 
     submit(user: User, type: boolean){
         if (type) {
-            this.regService.postDataEmployee(user)
+            this.regService.postDataEmployee(user, host+'employee/')
                 .subscribe(
                     (data: User) => {
                         this.receivedUser = data;
@@ -55,7 +56,7 @@ export class RegComponent {
                 );
         }
         else {
-            this.regService.postDataEmployer(user)
+            this.regService.postDataEmployer(user, host+'employer/')
                 .subscribe(
                     (data: User) => {
                         this.receivedUser = data;

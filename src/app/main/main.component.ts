@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 export class MainComponent {
     auth: boolean = false;
     user_type: string = '0';
-    token: string;
+    token: string = '';
     constructor(private httpService: HttpService, private router: Router){}
     ngOnInit() {
         this.token = localStorage.getItem('token');

@@ -1,8 +1,8 @@
 import {Component, OnInit} from "@angular/core";
-import {PortfolioList} from "./portfolio-list";
-import {PortfolioListService} from "./portfolio-list.service";
-import {EmployeeProfile} from "../employee-profile/employee-profile";
-import {EmployeeProfileService} from "../employee-profile/employee-profile.service";
+import {Portfolio} from "../../models/portfolio";
+import {PortfolioListService} from "../../services/portfolio-list.service";
+import {Employee} from "../../models/employee";
+import {EmployeeProfileService} from "../../services/employee-profile.service";
 
 
 
@@ -22,11 +22,11 @@ import {EmployeeProfileService} from "../employee-profile/employee-profile.servi
 
 export class PortfolioListComponent implements OnInit{
     sozdetel:string;
-    portfoliolists:PortfolioList;
-    empl:EmployeeProfile;
+    portfoliolists:Portfolio;
+    empl:Employee;
     elem_portfolio: any;
     portfolio_array: any;
-    employee: EmployeeProfile = new EmployeeProfile;
+    employee: Employee = new Employee;
 
     constructor(private httpService: PortfolioListService,
                 private employeeService : EmployeeProfileService){    }

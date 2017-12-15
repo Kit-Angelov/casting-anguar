@@ -1,16 +1,18 @@
 import {Component, OnInit} from "@angular/core";
-import {Parameters} from "../parameters/parameters";
-import {Appearancetype} from "../parameters/appearancetype";
-import {ParametersService} from "../parameters/parameters.service";
-import {City} from "../parameters/city";
-import {Country} from "../parameters/country";
-import {Haircolor} from "../parameters/haircolor";
-import {Gender} from "../parameters/gender";
-import {Eyecolor} from "../parameters/eyecolor";
-import {Employmenttype} from "../parameters/employmenttype";
-import {CreateRole} from "./create-role";
-import {CreateRoleService} from "./create-role.service";
-import {CastingList} from "../casting-list/casting-list";
+import {ParametersDetail} from "../../models/parametersDetail";
+import {Appearancetype} from "../../models/appearancetype";
+import {ParametersService} from "../../services/parameters.service";
+import {City} from "../../models/city";
+import {Country} from "../../models/country";
+import {Haircolor} from "../../models/haircolor";
+import {Gender} from "../../models/gender";
+import {Eyecolor} from "../../models/eyecolor";
+import {Employmenttype} from "../../models/employmenttype";
+import {RoleCreate} from "../../models/roleCreate";
+import {CreateRoleService} from "../../services/create-role.service";
+import {Casting} from "../../models/casting";
+import {ParametersCreate} from "../../models/parametersCreate";
+import {host} from "../../config";
 
 
 @Component({
@@ -54,15 +56,15 @@ import {CastingList} from "../casting-list/casting-list";
 
 export  class  CreateRoleComponent implements OnInit{
     countrys: Country[] = [];
-    createrole: CreateRole = new CreateRole();
+    createrole: RoleCreate = new RoleCreate();
     haircolors: Haircolor[] = [];
-    castings: CastingList[] = [];
+    castings: Casting[] = [];
     employmenttypes: Employmenttype[] = [];
     genders: Gender[] = [];
     eyecolors: Eyecolor[] =[];
     citys: City[] = [];
     appearancetypes: Appearancetype[] = [];
-    parameters: Parameters = new Parameters();
+    parameters: ParametersCreate = new ParametersCreate();
     tatu: boolean;
     piersing: boolean;
     role_id: number;
@@ -72,18 +74,18 @@ export  class  CreateRoleComponent implements OnInit{
                  private httpService: ParametersService) {}
 
     ngOnInit() {
-        this.httpService.getCountry().subscribe(data => this.countrys=data);
-        this.castingService.getCasting().subscribe(data => this.castings=data);
-        this.httpService.getHaircolor().subscribe(data => this.haircolors=data);
-        this.httpService.getGender().subscribe(data => this.genders=data);
-        this.httpService.getEyecolor().subscribe(data => this.eyecolors=data);
-        this.httpService.getCity().subscribe(data => this.citys=data);
-        this.httpService.getAppearancetype().subscribe(data => this.appearancetypes=data);
-        this.httpService.getEmploymenttype().subscribe(data => this.employmenttypes=data);
+        this.httpService.getCountry(host+'country/').subscribe(data => this.countrys=data);
+        this.castingService.getCasting(host+'castinglist/').subscribe(data => this.castings=data);
+        this.httpService.getHaircolor(host+'haircolor/').subscribe(data => this.haircolors=data);
+        this.httpService.getGender(host+'gender/').subscribe(data => this.genders=data);
+        this.httpService.getEyecolor(host+'eyecolor/').subscribe(data => this.eyecolors=data);
+        this.httpService.getCity(host+'city/').subscribe(data => this.citys=data);
+        this.httpService.getAppearancetype(host+'appearancetype/').subscribe(data => this.appearancetypes=data);
+        this.httpService.getEmploymenttype(host+'employmenttype/').subscribe(data => this.employmenttypes=data);
         this.tatu = false;
         this.piersing = false;
     }
-    submit(parameters:Parameters, createrole:CreateRole){
+    submit(parameters:ParametersCreate, createrole:RoleCreate){
         this.parameters.employmenttype.push(this.employmenttype_elem);
         if (this.tatu == true){
             this.parameters.tatu = 'true';
@@ -100,11 +102,11 @@ export  class  CreateRoleComponent implements OnInit{
         console.log(this.parameters.tatu);
         console.log(this.parameters.piercing);
         console.log(this.parameters);
-        this.castingService.postRole(createrole).subscribe(
+        this.castingService.postRole(createrole, host+'new_role/').subscribe(
             data=>{
                 this.role_id = data["role_id"];
                 console.log(data["role_id"]);
-                this.castingService.postParameter(parameters, this.role_id).subscribe(
+                this.castingService.postParameter(parameters, this.role_id, host+'new_paramrole/').subscribe(
                     data => {this.paramrole_id=data['paramrole_id']})
             }
         )

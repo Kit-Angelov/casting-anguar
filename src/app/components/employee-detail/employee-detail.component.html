@@ -1,0 +1,31 @@
+<div>
+    <p>логин{{profile?.username}}</p>
+    <p>имя{{profile?.first_name}}</p>
+    <p>фамилия{{profile?.last_name}}</p>
+    <p>аватар{{profile?.avatar}}</p>
+</div>
+    <p>Возраст {{parameters?.age}}</p>
+    <p>Рос {{parameters?.growth}}</p>
+    <p>Размер одежды {{parameters?.clothsize}}</p>
+    <p>Обхват груди {{parameters?.chestsize}}</p>
+    <p>Обхват талии {{parameters?.waistsize}}</p>
+    <p>Обхват бедер {{parameters?.thighsize}}</p>
+    <p>Размер ног {{parameters?.footsize}}</p>
+    <p *ngIf="parameters?.necksize">Обхват шеи {{parameters?.necksize}}</p>
+    <p *ngIf="parameters?.headsize">Обхват головы {{parameters?.headsize}}</p>
+    <p>Пирсинг:</p>
+    <p *ngIf="parameters?.piercing == true">Да</p>
+    <p *ngIf="parameters?.piercing == false">Нет</p>
+    <p>Тату:</p>
+    <p *ngIf="parameters?.tatu == true">Да</p>
+    <p *ngIf="parameters?.tatu == false">Нет</p>
+    <p>Тип внешности {{parameters?.appearancetype?.name}}</p>
+    <p>Цвет волос {{parameters?.haircolor?.name}}</p>
+    <p>Город {{parameters?.city?.name}}</p>
+    <p>Цвет глаз {{parameters?.eyecolor?.name}}</p>
+    <p>Пол {{parameters?.gender?.name}}</p>
+    <p>Страна {{parameters?.country?.name}}</p>
+    <p *ngFor="let type of parameters.employmenttype| slice:0:1">Профиль {{type.name}}</p>
+
+    <p>мыло из контактов{{contacts?.email}}</p>
+    <p>номер из контактов{{contacts?.phone_number}}</p>

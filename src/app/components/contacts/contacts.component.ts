@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ContactsService} from "./contacts.service";
-import {Contacts} from "./contacts";
+import {ContactsService} from "../../services/contacts.service";
+import {Contacts} from "../../models/contacts";
+import {host} from "../../config";
 
 
 @Component({
@@ -24,7 +25,7 @@ export  class  ContactsComponent implements OnInit{
         console.log(this.contacts.phone_number);
         let user_id: string;
         user_id = localStorage.getItem('user_id');
-        this.httpService.postContacts(contacts, user_id)
+        this.httpService.postContacts(contacts, user_id, host + 'contacts/')
             .subscribe(
                 data => {this.received = data["contacts_id"]},
             );

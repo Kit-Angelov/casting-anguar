@@ -1,14 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Parameters} from './parameters';
-import {Appearancetype} from "./appearancetype";
-import {ParametersService} from "./parameters.service";
-import {City} from "./city";
-import {Country} from "./country";
-import {Haircolor} from "./haircolor";
-import {Gender} from "./gender";
-import {Eyecolor} from "./eyecolor";
+import {ParametersCreate} from '../../models/parametersCreate';
+import {Appearancetype} from "../../models/appearancetype";
+import {ParametersService} from "../../services/parameters.service";
+import {City} from "../../models/city";
+import {Country} from "../../models/country";
+import {Haircolor} from "../../models/haircolor";
+import {Gender} from "../../models/gender";
+import {Eyecolor} from "../../models/eyecolor";
 import {FormGroup, FormControl} from "@angular/forms";
-import {Employmenttype} from "./employmenttype";
+import {Employmenttype} from "../../models/employmenttype";
+import {host} from "../../config";
 
 @Component({
     selector: 'parameters-app',
@@ -45,7 +46,7 @@ export  class  ParametersComponent implements OnInit{
     eyecolors: Eyecolor[] =[];
     citys: City[] = [];
     appearancetypes: Appearancetype[] = [];
-    parameters: Parameters = new Parameters();
+    parameters: ParametersCreate = new ParametersCreate();
     tatu: boolean;
     piersing: boolean;
     received: number;
@@ -53,17 +54,17 @@ export  class  ParametersComponent implements OnInit{
     constructor(private httpService:ParametersService){}
 
      ngOnInit() {
-        this.httpService.getCountry().subscribe(data => this.countrys=data);
-        this.httpService.getHaircolor().subscribe(data => this.haircolors=data);
-        this.httpService.getGender().subscribe(data => this.genders=data);
-        this.httpService.getEyecolor().subscribe(data => this.eyecolors=data);
-        this.httpService.getCity().subscribe(data => this.citys=data);
-        this.httpService.getAppearancetype().subscribe(data => this.appearancetypes=data);
-        this.httpService.getEmploymenttype().subscribe(data => this.employmenttypes=data);
+         this.httpService.getCountry(host+'country/').subscribe(data => this.countrys=data);
+         this.httpService.getHaircolor(host+'haircolor/').subscribe(data => this.haircolors=data);
+         this.httpService.getGender(host+'gender/').subscribe(data => this.genders=data);
+         this.httpService.getEyecolor(host+'eyecolor/').subscribe(data => this.eyecolors=data);
+         this.httpService.getCity(host+'city/').subscribe(data => this.citys=data);
+         this.httpService.getAppearancetype(host+'appearancetype/').subscribe(data => this.appearancetypes=data);
+         this.httpService.getEmploymenttype(host+'employmenttype/').subscribe(data => this.employmenttypes=data);
         this.tatu = false;
         this.piersing = false;
     }
-    submit(parameters:Parameters){
+    submit(parameters:ParametersCreate){
         this.parameters.employmenttype.push(this.employmenttype_elem);
         if (this.tatu == true){
             this.parameters.tatu = 'true';
@@ -81,7 +82,7 @@ export  class  ParametersComponent implements OnInit{
         console.log(this.parameters.piercing);
         let user_id: string;
         user_id = localStorage.getItem('user_id');
-        this.httpService.postParameter(parameters, user_id)
+        this.httpService.postParameter(parameters, user_id, host+'new_parameters/')
                  .subscribe(
                      data => {this.received = data["parameters_id"]},
                  );

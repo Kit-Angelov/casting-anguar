@@ -27,6 +27,15 @@
     <p>Пол {{parameters?.gender?.name}}</p>
     <p>Страна {{parameters?.country?.name}}</p>
     <p *ngFor="let type of parameters.employmenttype| slice:0:1">Профиль {{type.name}}</p>
+    <img *ngFor="let photo of photos" [src]="photo?.photo" style="width: 100px; height: 100px;">
+    <ul>
+        <li *ngFor="let portfolio of portfolios">
+            <p>{{portfolio?.name}}</p>
+            <p>{{portfolio?.description}}</p>
+            <p>{{portfolio?.start_date}}</p>
+            <p>{{portfolio?.finish_date}}</p>
+        </li>
+    </ul>
 </div>
 <div *ngIf="!profile?.check_params">
     <p>Заполните анкету</p>

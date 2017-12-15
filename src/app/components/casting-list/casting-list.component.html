@@ -1,0 +1,11 @@
+<div class="casting-list-wrapp">
+    <div class="header">
+        <div class="header-menu">
+            <a class="header-menu-elem" routerLink="/employer/casting_list/active" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><p>Активные</p></a>
+            <a class="header-menu-elem" routerLink="/employer/casting_list/complite" routerLinkActive="active"><p>Завершенные</p></a>
+        </div>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

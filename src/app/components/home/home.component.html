@@ -1,10 +1,10 @@
-<div class="home_wrapper">
+<div class="home_wrapper col-md-10 col-md-offset-1">
     <div class="main_menu">
         <div class="logo left_part_menu">
-
+            <img src="./img/logo.svg">
         </div>
         <div [ngClass]="{invisible: visibility}" (click)="toggle_home()" class="back_to_main">
-            <p>вернуться на главную</p>
+            <p>&#8592; Вернуться на главную</p>
         </div>
         <div class="sign_up right_part_menu">
             <div class="button_sign_up">
@@ -13,7 +13,7 @@
         </div>
         <div class="sign_in right_part_menu">
             <div class="button_sign_in">
-                <a routerLink="/auth">Войти</a>
+                <a routerLink="/auth"><p>Войти</p></a>
             </div>
         </div>
         <div class="account_question right_part_menu">
@@ -26,9 +26,9 @@
         </div>
     </div>
     <div class="wrapper">
-        <div class="left_part">
+        <div class="left_part col-md-6">
             <div class="content_info">
-                <div *ngIf="state == 0" class="content_info_text">
+                <div *ngIf="state == 0" class="content_info_text main-info-text">
                 <div class="title_content_info">
                     <p>Чип & Дейл - <br>
                         <span>кастинговое агентство</span><br>
@@ -43,15 +43,15 @@
                     </p>
                 </div>
                 </div>
-                <div *ngIf="state == 1" class="content_info_text">
+                <div *ngIf="state == 1" class="content_info_text employee-info-text">
                     <div class="title_content_info">
                         <p>Актуальные кастинги и<br>
                             возможности <span>каждый день</span></p>
                     </div>
                     <div class="line_after_title_content_info"></div>
                     <div class="text_content_info_employee">
-                        <div class="col-md-4 employee-home-info">
-                            <p>Img</p>
+                        <div class="employee-home-info">
+                            <img src="img/folder.svg">
                             <p class="title-home-employee-info">Большая база<br>актуальных кастингов</p>
                             <p class="text-home-employee-info">Нет необходимости искать<br>
                                 кастинги на множестве<br>
@@ -59,8 +59,8 @@
                                 можете найти множество<br>
                                 возможностей для себя.</p>
                         </div>
-                        <div class="col-md-4 employee-home-info">
-                            <p>Img</p>
+                        <div class="employee-home-info employee-home-info-middle">
+                            <img src="img/user.svg">
                             <p class="title-home-employee-info">Индивидуальный<br>редактируемый пофиль</p>
                             <p class="text-home-employee-info">Анкета, заполняемая Вами,<br>
                                 содержит все самые важные<br>
@@ -68,8 +68,8 @@
                                 соискателей, а также вы можете<br>
                                 сами отвечать ей на вакансии.</p>
                         </div>
-                        <div class="col-md-4 employee-home-info">
-                            <p>Img</p>
+                        <div class="employee-home-info">
+                            <img src="img/604448.svg">
                             <p class="title-home-employee-info">Быстрая и удобная<br>коммуникация</p>
                             <p class="text-home-employee-info">Соискатели видят Ваши<br>
                                 контактные данные. Вам также<br>
@@ -79,15 +79,15 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="state == 2" class="content_info_text">
+                <div *ngIf="state == 2" class="content_info_text employer-info-text">
                     <div class="title_content_info">
                         <p>Удобная и актуальная база<br>
                             <span>актёров и моделей</span></p>
                     </div>
                     <div class="line_after_title_content_info"></div>
                     <div class="text_content_info_employer">
-                        <div class="col-md-4 employee-home-info">
-                            <p>Img</p>
+                        <div class="employee-home-info">
+                            <img src="img/layers.svg">
                             <p class="title-home-employee-info">Простой и понятный<br>интерфейс</p>
                             <p class="text-home-employee-info">Войдите в систему, <span class="span-text-home-employee-info">оформите<br>
                                 подписку</span>, разместите вакансию<br>
@@ -95,8 +95,8 @@
                                 или приглашайте актёров на<br>
                                 кастинг самостоятельно.</p>
                         </div>
-                        <div class="col-md-4 employee-home-info">
-                            <p>Img</p>
+                        <div class="employee-home-info employee-home-info-middle">
+                            <img src="img/team.svg">
                             <p class="title-home-employee-info">Поиск исполнителей<br>под любой проект</p>
                             <p class="text-home-employee-info">"Чип & Дейл" позволяет Вам<br>
                                 найти исполнителей на любой<br>
@@ -104,8 +104,8 @@
                                 рекламная съёмка, модельная<br>
                                 съёмка или любая другая.</p>
                         </div>
-                        <div class="col-md-4 employee-home-info">
-                            <p>Img</p>
+                        <div class="employee-home-info">
+                            <img src="img/604448.svg">
                             <p class="title-home-employee-info">Быстрая и удобная<br>коммуникация</p>
                             <p class="text-home-employee-info">После <span class="span-text-home-employee-info">оформления подписки</span><br>
                                 вам доступны все контактные<br>
@@ -149,11 +149,17 @@
                 </div>
             </div>
         </div>
-        <div class="right_part">
+        <div class="contacts">
+            <img src="img/telephone.svg">
+            <p>8 (800) 354-67-12</p>
+            <img src="img/envelope.svg">
+            <p>chipdale@mail.com</p>
+        </div>
+        <div class="right_part col-md-6">
             <div class="main_photo">
                 <img *ngIf="state == 0" src="./img/kamera.png">
-                <img *ngIf="state == 1" src="./img/kamera.png">
-                <img *ngIf="state == 2" src="./img/kamera.png">
+                <img *ngIf="state == 1" src="./img/акт.png">
+                <img *ngIf="state == 2" src="./img/реж.png">
             </div>
         </div>
     </div>

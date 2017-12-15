@@ -1,0 +1,14 @@
+<div class="casting-element" *ngFor="let castingInfo of castingInfos" >
+    <img class="casting-element-img" [src]=castingInfo?.image>
+    <div class="casting-element-info">
+        <p >Имя : {{castingInfo?.name}}</p>
+        <p>тип : {{castingInfo?.type}}</p>
+        <p>роли :</p>
+        <ul>
+            <li *ngFor="let role of castingInfo['new_role_set']" >
+                <p>{{role?.name}}</p>
+            </li>
+        </ul>
+        <a [routerLink]="['/employer/castingDetail', castingInfo?.id]">Подробнее</a>
+    </div>
+</div>

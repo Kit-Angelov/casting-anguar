@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {EmployerProfile} from "./employer-profile";
-import {EmployerProfileService} from "./employer-profile.service";
+import {Employer} from "../../models/employer";
+import {EmployerProfileService} from "../../services/employer-profile.service";
 
 @Component({
     selector: 'employer-profile-app',
@@ -14,11 +14,11 @@ import {EmployerProfileService} from "./employer-profile.service";
 export class EmployerProfileComponent implements OnInit{
 
     url: string = localStorage.getItem('user_id');
-    employer: EmployerProfile;
+    employer: Employer;
     constructor(private httpService: EmployerProfileService){}
 
     ngOnInit(){
-        this.httpService.getCreator(this.url).subscribe((data:EmployerProfile)=> this.employer=data )
+        this.httpService.getCreator(this.url).subscribe((data:Employer)=> this.employer=data )
     }
 
 }

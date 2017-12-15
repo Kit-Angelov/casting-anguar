@@ -1,7 +1,7 @@
-import {Portfolio} from "./portfolio";
-import {PortfolioService} from "./portfolio.service";
+import {Portfolio} from "../../models/portfolio";
+import {PortfolioService} from "../../services/portfolio.service";
 import {Component, OnInit} from "@angular/core";
-
+import {host} from "../../config";
 
 
 @Component({
@@ -25,6 +25,6 @@ export class PortfolioComponent implements OnInit{
 
 
     ngOnInit(){
-        this.httpService.getPortfolio().subscribe((data:Portfolio)=> this.portfolio=data)
+        this.httpService.getPortfolio(host+'portfolioelem/').subscribe((data:Portfolio)=> this.portfolio=data)
     }
 }

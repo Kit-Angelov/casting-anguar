@@ -1,0 +1,58 @@
+.casting-list-wrapp{
+    width: 100%;
+    height: auto;
+}
+
+.header{
+    width: 100%;
+    height: 150px;
+    padding-top: 120px;
+    background-color: white;
+}
+
+.header-menu{
+    height: 30px;
+    width: 100%;
+    padding-left: 35px;
+}
+
+.header-menu-elem{
+    display: block;
+    width: auto;
+    height: 30px;
+    float: left;
+}
+.header-menu-elem p{
+    color: #333;
+}
+.header-menu-elem.active{
+    border-bottom: 1px solid red;
+}
+
+.header-menu-elem.active p{
+    color: black;
+}
+
+.content{
+    width: 100%;
+    height: auto;
+}
+
+.casting-element{
+    width: 100%;
+    height: 235px;
+    background-color: white;
+    margin-top: 10px;
+}
+
+.casting-element-img{
+    width: 350px;
+    height: 100%;
+    float: left;
+    display: block;
+}
+
+.casting-element-info{
+    float: right;
+    padding: 40px;
+}

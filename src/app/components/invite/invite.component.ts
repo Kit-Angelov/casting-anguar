@@ -1,10 +1,11 @@
 import { Component, OnInit} from '@angular/core';
-import {Invite} from "./invite";
-import {InviteService} from "./invite.service";
-import {RoleService} from "../role/role.service";
-import {Role} from "../role/role";
-import {EmployeeProfile} from "../employee-profile/employee-profile";
-import {EmployeeProfileService} from "../employee-profile/employee-profile.service";
+import {Invite} from "../../models/invite";
+import {InviteService} from "../../services/invite.service";
+import {RoleService} from "../../services/role.service";
+import {Role} from "../../models/role";
+import {Employee} from "../../models/employee";
+import {EmployeeProfileService} from "../../services/employee-profile.service";
+import {host} from "../../config";
 
 
 @Component({
@@ -22,7 +23,7 @@ export class InviteComponent implements OnInit{
     user: Invite;
     qwer: string;
     role: Role;
-    naemnik: EmployeeProfile;
+    naemnik: Employee;
     actor: string;
     sozdatel: string;
     employer: '';
@@ -32,13 +33,13 @@ export class InviteComponent implements OnInit{
                 private employeeServie: EmployeeProfileService){}
 
     ngOnInit(){
-        this.httpService.getInvite().subscribe((data:Invite) => {
+        this.httpService.getInvite(host+'invite').subscribe((data:Invite) => {
             this.user = data;
             this.qwer = this.user.role;
             this.roleService.getRole(this.qwer).subscribe((data: Role) => this.role = data);
             this.actor = this.user.employee;
-            this.employeeServie.getEmployee(this.actor).subscribe((data : EmployeeProfile)=> this.naemnik = data);
-            this.sozdatel = this.user.creator;
+            this.employeeServie.getEmployee(this.actor).subscribe((data : Employee)=> this.naemnik = data);
+            this.sozdatel = this.user.employer;
             // this.creatorService.getCreator(this.sozdatel).subscribe((data: string)=> this.employer = data)
         });
     }

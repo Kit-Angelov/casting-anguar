@@ -1,9 +1,8 @@
-import {CastingCreate} from "./casting-create";
+import {Casting} from "../../models/casting";
 import {Component, OnInit} from "@angular/core";
-import {Owner} from "./owner";
-import {CastingType} from "./casting-type";
-import {CastingCreateService} from "./casting-create.service";
-
+import {CastingType} from "../../models/casting-type";
+import {CastingCreateService} from "../../services/casting-create.service";
+import { host } from "../../config";
 
 
 @Component({
@@ -26,25 +25,23 @@ import {CastingCreateService} from "./casting-create.service";
 
 
 export class CastingCreateComponent implements OnInit{
-    castingOwnders: Owner[] = [];
     castingTypes: CastingType[] = [];
-    addCasting: CastingCreate = new CastingCreate();
-    receivedUser: CastingCreate;
-
+    addCasting: Casting = new Casting();
+    receivedUser: Casting;
+    user_id = localStorage.getItem('user_id');
 
 constructor(private httpService:CastingCreateService){}
 
 
         ngOnInit(){
-            this.httpService.getUser_list().subscribe(data => this.castingOwnders=data);
-            this.httpService.getCasting_Type().subscribe(data => this.castingTypes=data);
+            this.httpService.getCasting_Type(host + 'castingtype/').subscribe(data => this.castingTypes=data);
 
     }
-    submit(addCasting:CastingCreate){
+    submit(addCasting:Casting){
 
-        this.httpService.postCasting(addCasting)
+        this.httpService.postCasting(addCasting, host + 'castinglist/')
             .subscribe(
-                (data: CastingCreate) => {this.receivedUser = data},
+                (data: Casting) => {this.receivedUser = data},
             );
 
 
